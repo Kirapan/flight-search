@@ -1,3 +1,4 @@
+//Submit search for results
 $(document).ready(function () {
 
   $('#flight-search form').on('submit', function (ev) {

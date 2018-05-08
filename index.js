@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.set('view engine', 'ejs');
 
 let data = require('./data/provider-data.js')
-
+//search flight based on inputs
 function searchFlights(from, to) {
   from = from.toUpperCase()
   to = to.toUpperCase()
@@ -28,9 +28,6 @@ function searchFlights(from, to) {
     } else {
       let timeA = new Date(a['Departure Time'])
       let timeB = new Date(b['Departure Time'])
-  
-      console.log("timemememe", timeA)
-      console.log("timemememe", timeB)
       return timeA - timeB
     }
   })

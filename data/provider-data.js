@@ -1,3 +1,4 @@
+//Data given
 provider1 =
   ['LAS,6/23/2014 13:30:00,LAX,6/23/2014 14:40:00,$151.00',
     'YYZ,6/15/2014 6:45:00,YYC,6/15/2014 8:54:00,$578.00',
@@ -36,12 +37,12 @@ provider3 =
     'LAS|6/16/2014 8:11:00|YYZ|6/16/2014 19:28:00|$703.00',
     'LHR|6/27/2014 16:40:00|BOS|6/27/2014 18:50:00|$1616.00',
     'MSY|6/19/2014 14:55:00|YUL|6/19/2014 23:24:00|$645.00']
-
+//convert date into same format
 function dateConverter(date) {
   let newDate = date.replace(/(\d+)\-(\d+)\-(\d{4})/g, '$1/$2/$3')
   return newDate
 }
-
+//remove duplicate flights
 function removeDuplicates(a, b, c) {
   let data1 = a.map(val => {return dateConverter(val).split(/[,|]/).join(',')})
   let data2 = b.map(val => {return dateConverter(val).split(/[,|]/).join(',')})
@@ -50,8 +51,7 @@ function removeDuplicates(a, b, c) {
   let unique = data.filter(function (item, pos) {return data.indexOf(item) === pos});
   return unique;
 }
-
-
+//format the flight info into objects
 function dataFormatter(values) {
   let final = values.map(val => {
     let keys = ['Origin', 'Departure Time', 'Destination', 'Destination Time', 'Price'];
@@ -62,7 +62,6 @@ function dataFormatter(values) {
   })
   return final
 }
-
 
 let dataSets = removeDuplicates(provider1, provider2, provider3)
 let data = dataFormatter(dataSets);
