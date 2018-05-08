@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Results</title>
+</head>
+
+<body>
+  <header></header>
+  <section id='results'>
+    <h2>Here are the results per your request!</h2>
+    <ul>
+      <% if (data.length === 0) { %>
+        <li><%= `No Flights Found for ${origin} --> ${destination}`%></li>
+      <% } else { %>
+        <% data.forEach(function(item){ %>
+        <li><%= `${item['Origin']} --> ${item['Destination']} (${item['Departure Time']} --> ${item['Destination Time']}) - ${item['Price']}` %></li>
+      <% })} %>
+    </ul>
+    <button onclick="location.href='http://localhost:8080/searchFlights'" type="button">
+     Search Again</button>
+  </section>
+</body>
+
+</html>
